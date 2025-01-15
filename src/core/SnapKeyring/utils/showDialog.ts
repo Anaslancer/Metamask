@@ -1,4 +1,4 @@
-import { SNAP_MANAGE_ACCOUNTS_CONFIRMATION_TYPES } from '../../RPCMethods/RPCMethodMiddleware';
+import { SNAP_MANAGE_ACCOUNTS_CONFIRMATION_TYPES } from '../../redux/slices/RPCMethods/RPCMethodMiddleware';
 import { SnapKeyringBuilderMessenger } from '../types';
 
 interface CreateAccountConfirmationResult {

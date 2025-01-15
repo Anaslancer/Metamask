@@ -1,6 +1,6 @@
 import { hasProperty, isObject } from '@metamask/utils';
 import { ensureValidState } from './util';
-import Logger from '../../util/Logger';
+// import Logger from '../../util/Logger';
 import { RpcEndpointType } from '@metamask/network-controller';
 import {
   allowedInfuraHosts,
@@ -101,9 +101,9 @@ export default function migrate(state: unknown) {
         );
 
         if (endpointIndex !== -1) {
-          Logger.log(
-            `Migration 135: Updating 'https://mainnet.base.org' to 'https://base-mainnet.infura.io/v3/${infuraProjectId}' in Base network RPC endpoints.`,
-          );
+          // Logger.log(
+          //   `Migration 135: Updating 'https://mainnet.base.org' to 'https://base-mainnet.infura.io/v3/${infuraProjectId}' in Base network RPC endpoints.`,
+          // );
 
           // Update the first occurrence of the deprecated URL
           rpcEndpoints[endpointIndex] = {

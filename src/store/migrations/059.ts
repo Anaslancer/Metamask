@@ -1,6 +1,6 @@
 import { hasProperty, isObject } from '@metamask/utils';
 import { ensureValidState } from './util';
-import Logger from '../../util/Logger';
+// import Logger from '../../util/Logger';
 
 /**
  * Migration for checking if selectedAccount on AccountsController is undefined
@@ -46,17 +46,17 @@ export default function migrate(state: unknown) {
     ) {
       const firstAccount = Object.values(internalAccounts.accounts)[0];
       if (isObject(firstAccount) && hasProperty(firstAccount, 'id')) {
-        Logger.log(
-          `Migration 59: Setting selectedAccount to the id of the first account.`,
-        );
+        // Logger.log(
+        //   `Migration 59: Setting selectedAccount to the id of the first account.`,
+        // );
         state.engine.backgroundState.AccountsController.internalAccounts.selectedAccount =
           firstAccount.id;
       }
     } else {
       // Fallback to setting selectedAccount to empty string. AccountsController automatically reconciles the field
-      Logger.log(
-        `Migration 59: AccountController's selectedAccount is undefined. Setting it to empty string.`,
-      );
+      // Logger.log(
+      //   `Migration 59: AccountController's selectedAccount is undefined. Setting it to empty string.`,
+      // );
       state.engine.backgroundState.AccountsController.internalAccounts.selectedAccount =
         '';
     }

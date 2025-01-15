@@ -1,7 +1,7 @@
 import { NetworksChainId } from '@metamask/controller-utils';
 import { isSafeChainId } from '../../util/networks';
-import { GOERLI } from '../../../app/constants/network';
-import { regex } from '../../../app/util/regex';
+import { GOERLI } from '@/src/constants/network';
+import { regex } from '@/src/util/regex';
 
 export default function migrate(state) {
   const provider = state.engine.backgroundState.NetworkController.provider;

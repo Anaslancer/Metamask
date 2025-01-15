@@ -7,7 +7,7 @@ import {
 } from '@segment/analytics-react-native';
 import axios, { AxiosHeaderValue } from 'axios';
 import StorageWrapper from '../../store/storage-wrapper';
-import Logger from '../../util/Logger';
+// import Logger from '../../util/Logger';
 import {
   AGREED,
   ANALYTICS_DATA_DELETION_DATE,
@@ -17,7 +17,7 @@ import {
   METAMETRICS_DELETION_REGULATION_ID,
   METRICS_OPT_IN,
   MIXPANEL_METAMETRICS_ID,
-} from '../../constants/storage';
+} from '@/src/constants/storage';
 
 import {
   DataDeleteDate,
@@ -33,9 +33,9 @@ import {
 } from './MetaMetrics.types';
 import { v4 as uuidv4 } from 'uuid';
 import { Config } from '@segment/analytics-react-native/lib/typescript/src/types';
-import generateDeviceAnalyticsMetaData from '../../util/metrics/DeviceAnalyticsMetaData/generateDeviceAnalyticsMetaData';
-import generateUserSettingsAnalyticsMetaData from '../../util/metrics/UserSettingsAnalyticsMetaData/generateUserProfileAnalyticsMetaData';
-import { isE2E } from '../../util/test/utils';
+import generateDeviceAnalyticsMetaData from '@/src/util/metrics/DeviceAnalyticsMetaData/generateDeviceAnalyticsMetaData';
+import generateUserSettingsAnalyticsMetaData from '@/src/util/metrics/UserSettingsAnalyticsMetaData/generateUserProfileAnalyticsMetaData';
+import { isE2E } from '@/src/util/test/utils';
 import MetaMetricsPrivacySegmentPlugin from './MetaMetricsPrivacySegmentPlugin';
 
 /**
@@ -187,8 +187,8 @@ class MetaMetrics implements IMetaMetrics {
   #isMetaMetricsEnabled = async (): Promise<boolean> => {
     const enabledPref = await StorageWrapper.getItem(METRICS_OPT_IN);
     this.enabled = AGREED === enabledPref;
-    if (__DEV__)
-      Logger.log(`Current MetaMatrics enable state: ${this.enabled}`);
+    // if (__DEV__)
+    //   Logger.log(`Current MetaMatrics enable state: ${this.enabled}`);
     return this.enabled;
   };
 
@@ -304,7 +304,7 @@ class MetaMetrics implements IMetaMetrics {
       // TODO: Replace "any" with type
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      Logger.error(error, 'Error resetting MetaMetrics ID');
+      // Logger.error(error, 'Error resetting MetaMetrics ID');
     }
   };
 
@@ -353,7 +353,7 @@ class MetaMetrics implements IMetaMetrics {
         // here we don't want to handle the error, there's nothing we can do
         // so we just catch and log it async and do not await for return
         // as this must not block the event tracking
-        Logger.error(error, 'Analytics Data Record Error');
+        // Logger.error(error, 'Analytics Data Record Error');
       });
   };
 
@@ -378,7 +378,7 @@ class MetaMetrics implements IMetaMetrics {
       // TODO: Replace "any" with type
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      Logger.error(error, 'Error storing MetaMetrics enable state');
+      // Logger.error(error, 'Error storing MetaMetrics enable state');
     }
   };
 
@@ -433,7 +433,7 @@ class MetaMetrics implements IMetaMetrics {
       // TODO: Replace "any" with type
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      Logger.error(error, 'Analytics Deletion Task Error');
+      // Logger.error(error, 'Analytics Deletion Task Error');
       return {
         status: DataDeleteResponseStatus.error,
         error: 'Analytics Deletion Task Error',
@@ -481,7 +481,7 @@ class MetaMetrics implements IMetaMetrics {
         // TODO: Replace "any" with type
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        Logger.error(error, 'Analytics Deletion Task Check Error');
+        // Logger.error(error, 'Analytics Deletion Task Check Error');
         return {
           status: DataDeleteResponseStatus.error,
           dataDeleteStatus: DataDeleteStatus.unknown,
@@ -509,14 +509,14 @@ class MetaMetrics implements IMetaMetrics {
         flushAt: process.env.SEGMENT_FLUSH_EVENT_LIMIT as unknown as number,
       };
 
-      if (__DEV__)
-        Logger.log(
-          `MetaMetrics client configured with: ${JSON.stringify(
-            config,
-            null,
-            2,
-          )}`,
-        );
+      // if (__DEV__)
+      //   Logger.log(
+      //     `MetaMetrics client configured with: ${JSON.stringify(
+      //       config,
+      //       null,
+      //       2,
+      //     )}`,
+      //   );
 
       const segmentClient = isE2E ? undefined : createClient(config);
       segmentClient?.add({ plugin: new MetaMetricsPrivacySegmentPlugin() });
@@ -558,12 +558,12 @@ class MetaMetrics implements IMetaMetrics {
       };
       await this.addTraitsToUser(consolidatedTraits);
 
-      if (__DEV__)
-        Logger.log(`MetaMetrics configured with ID: ${this.metametricsId}`);
+      // if (__DEV__)
+      //   Logger.log(`MetaMetrics configured with ID: ${this.metametricsId}`);
       // TODO: Replace "any" with type
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      Logger.error(error, 'Error initializing MetaMetrics');
+      // Logger.error(error, 'Error initializing MetaMetrics');
     }
     return this.#isConfigured;
   };
@@ -745,7 +745,7 @@ class MetaMetrics implements IMetaMetrics {
         // TODO: Replace "any" with type
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        Logger.log('Error checkDataDeleteStatus -', error);
+        // Logger.log('Error checkDataDeleteStatus -', error);
         status.dataDeletionRequestStatus = DataDeleteStatus.unknown;
       }
 

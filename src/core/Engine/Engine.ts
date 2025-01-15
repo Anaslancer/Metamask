@@ -114,7 +114,7 @@ import {
   EndowmentPermissions,
   detectSnapLocation,
 } from '../Snaps';
-import { getRpcMethodMiddleware } from '../RPCMethods/RPCMethodMiddleware';
+import { getRpcMethodMiddleware } from '../redux/slices/RPCMethods/RPCMethodMiddleware';
 
 import {
   AuthenticationController,
@@ -165,10 +165,10 @@ import {
   networkIdWillUpdate,
 } from '../../core/redux/slices/inpageProvider';
 import SmartTransactionsController from '@metamask/smart-transactions-controller';
-import { getAllowedSmartTransactionsChainIds } from '../../../app/constants/smartTransactions';
-import { selectBasicFunctionalityEnabled } from '../../selectors/settings';
+import { getAllowedSmartTransactionsChainIds } from '@/src/constants/smartTransactions';
+import { selectBasicFunctionalityEnabled } from '@/src/selectors/settings';
 import { selectShouldUseSmartTransaction } from '../../selectors/smartTransactionsController';
-import { selectSwapsChainFeatureFlags } from '../../reducers/swaps';
+import { selectSwapsChainFeatureFlags } from '@/src/reducers/swaps';
 import {
   SmartTransactionStatuses,
   ClientId,
@@ -194,7 +194,7 @@ import { HandleSnapRequestArgs } from '../Snaps/types';
 import { handleSnapRequest } from '../Snaps/utils';
 ///: END:ONLY_INCLUDE_IF
 import { getSmartTransactionMetricsProperties } from '../../util/smart-transactions';
-import { trace } from '../../util/trace';
+import { trace } from '@/src/util/trace';
 import { MetricsEventBuilder } from '../Analytics/MetricsEventBuilder';
 import { JsonMap } from '../Analytics/MetaMetrics.types';
 import { isPooledStakingFeatureEnabled } from '../../components/UI/Stake/constants';

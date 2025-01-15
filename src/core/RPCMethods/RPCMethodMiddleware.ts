@@ -34,7 +34,7 @@ import PPOMUtil from '../../lib/ppom/ppom-util';
 import { selectProviderConfig } from '../../selectors/networkController';
 import { setEventStageError, setEventStage } from '../../actions/rpcEvents';
 import { isWhitelistedRPC, RPCStageTypes } from '../../reducers/rpcEvents';
-import { regex } from '../../../app/util/regex';
+import { regex } from '@/src/util/regex';
 import Logger from '../../../app/util/Logger';
 import DevLogger from '../SDKConnect/utils/DevLogger';
 import { addTransaction } from '../../util/transaction-controller';

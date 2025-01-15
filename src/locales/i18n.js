@@ -1,10 +1,10 @@
 import ReactNative from 'react-native';
-import StorageWrapper from '../app/store/storage-wrapper';
+import StorageWrapper from '@/src/store/storage-wrapper';
 import I18n from 'react-native-i18n';
 // eslint-disable-next-line import/no-nodejs-modules
 import { EventEmitter } from 'events';
 
-import { LANGUAGE } from '../app/constants/storage';
+import { LANGUAGE } from '@/src/constants/storage';
 // Polyfill Intl & include fallback locale (en) for Hermes iOS
 // import 'intl';
 // import 'intl/locale-data/jsonp/en.js';

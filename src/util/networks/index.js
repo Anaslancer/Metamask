@@ -1,5 +1,5 @@
 import URL from 'url-parse';
-import networksWithImages from 'images/image-icons';
+// import networksWithImages from 'images/image-icons';
 import {
   MAINNET,
   NETWORKS_CHAIN_ID,
@@ -8,12 +8,12 @@ import {
   LINEA_GOERLI,
   LINEA_MAINNET,
   LINEA_SEPOLIA,
-} from '../../../app/constants/network';
-import { NetworkSwitchErrorType } from '../../../app/constants/error';
+} from '@/src/constants/network';
+import { NetworkSwitchErrorType } from '@/src/constants/error';
 import { ChainId, NetworkType, toHex } from '@metamask/controller-utils';
 import { toLowerCaseEquals } from '../general';
 import { fastSplit } from '../number';
-import { regex } from '../../../app/util/regex';
+import { regex } from '@/src/util/regex';
 
 /* eslint-disable */
 const ethLogo = require('../../images/eth-logo-new.png');
@@ -27,7 +27,7 @@ import {
   UnpopularNetworkList,
   CustomNetworkImgMapping,
 } from './customNetworks';
-import { strings } from '../../../locales/i18n';
+import { strings } from '@/src/locales/i18n';
 import {
   getEtherscanAddressUrl,
   getEtherscanBaseUrl,
@@ -40,7 +40,7 @@ import {
   MAINNET_BLOCK_EXPLORER,
   SEPOLIA_BLOCK_EXPLORER,
   SEPOLIA_FAUCET,
-} from '../../constants/urls';
+} from '@/src/constants/urls';
 
 /**
  * List of the supported networks
@@ -192,27 +192,27 @@ export const isMultiLayerFeeNetwork = (chainId) =>
  * @param {string} networkType - Type of network.
  * @returns - Image of test network or undefined.
  */
-export const getTestNetImage = (networkType) => {
-  if (
-    networkType === SEPOLIA ||
-    networkType === LINEA_GOERLI ||
-    networkType === LINEA_SEPOLIA
-  ) {
-    return networksWithImages?.[networkType.toUpperCase()];
-  }
-};
+// export const getTestNetImage = (networkType) => {
+//   if (
+//     networkType === SEPOLIA ||
+//     networkType === LINEA_GOERLI ||
+//     networkType === LINEA_SEPOLIA
+//   ) {
+//     return networksWithImages?.[networkType.toUpperCase()];
+//   }
+// };
 
-export const getTestNetImageByChainId = (chainId) => {
-  if (NETWORKS_CHAIN_ID.SEPOLIA === chainId) {
-    return networksWithImages?.SEPOLIA;
-  }
-  if (NETWORKS_CHAIN_ID.LINEA_GOERLI === chainId) {
-    return networksWithImages?.['LINEA-GOERLI'];
-  }
-  if (NETWORKS_CHAIN_ID.LINEA_SEPOLIA === chainId) {
-    return networksWithImages?.['LINEA-SEPOLIA'];
-  }
-};
+// export const getTestNetImageByChainId = (chainId) => {
+//   if (NETWORKS_CHAIN_ID.SEPOLIA === chainId) {
+//     return networksWithImages?.SEPOLIA;
+//   }
+//   if (NETWORKS_CHAIN_ID.LINEA_GOERLI === chainId) {
+//     return networksWithImages?.['LINEA-GOERLI'];
+//   }
+//   if (NETWORKS_CHAIN_ID.LINEA_SEPOLIA === chainId) {
+//     return networksWithImages?.['LINEA-SEPOLIA'];
+//   }
+// };
 
 /**
  * A list of chain IDs for known testnets
